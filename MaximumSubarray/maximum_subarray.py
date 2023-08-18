@@ -1,18 +1,24 @@
 from typing import List
 
 
-def maximum_subarray(array: List[int]) -> int:
-    """
-    Finds the subarray with the largest sum and returns its sum
+class Solution:
+    def maxSubArray(self, nums: List[int]) -> int:
+        maxSum = nums[0]
+        curr = 0
+        plus = False
+        for i in nums:
+            if i > 0:
+                plus = True
+                break
+        if not plus:
+            return max(nums)
 
-    Args:
-        array (List[int]): array
-
-    Returns:
-        int: sum
-    """
-
-    return 0
-
+        for i in nums:
+            curr += i
+            if curr > maxSum:
+                maxSum = curr
+            if curr < 0:
+                curr = 0
+        return maxSum
 
 # https://leetcode.com/problems/maximum-subarray/
