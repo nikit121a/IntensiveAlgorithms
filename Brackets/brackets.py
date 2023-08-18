@@ -15,6 +15,4 @@ class Solution:
         if len(d) != 0:
             return False
         return True
-
-
 # https://leetcode.com/problems/valid-parentheses/
