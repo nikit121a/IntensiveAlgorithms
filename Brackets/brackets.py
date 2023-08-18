@@ -1,17 +1,20 @@
-def are_brackets_correct(string: str) -> bool:
-    """
-    Accepts a string consisting only of opening and closing parentheses as input,
-    and checks whether this string is correct.
-    An empty string (absence of parentheses) is considered correct.
+from collections import deque
 
-    Args:
-        string (str): string to check
-
-    Returns:
-        bool: are parentheses correct
-    """
-
-    return False
+class Solution:
+    def isValid(self, s: str) -> bool:
+        diction = {"]": "[", "}": "{", ")": "("}
+        d = deque()
+        for i in s:
+            if i in diction.keys():
+                if len(d) == 0:
+                    return False
+                if d.pop() != diction[i]:
+                    return False
+            else:
+                d.append(i)
+        if len(d) != 0:
+            return False
+        return True
 
 
 # https://leetcode.com/problems/valid-parentheses/
